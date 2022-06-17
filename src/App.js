@@ -1,13 +1,20 @@
-import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import { Layout, Typography, Space } from 'antd';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import { Layout, Typography, Space } from "antd";
 
-import { Navbar, Homepage, Exchanges, Craptocurrencies, CryptoDetails, News } from './components';
-import './App.css';
+import {
+  Navbar,
+  Homepage,
+  Exchanges,
+  Craptocurrencies,
+  CryptoDetails,
+  News,
+} from "./components";
+import "./App.css";
 const App = () => {
   return (
     <>
-    <div className="app">
+      <div className="app">
         <div className="navbar">
           <Navbar />
         </div>
@@ -22,10 +29,18 @@ const App = () => {
                   <Route exact path="/exchanges" element={<Exchanges />} />
                 </Route>
                 <Route exact path="/craptocurrencies">
-                  <Route exact path="/craptocurrencies" element={<Craptocurrencies />} />
+                  <Route
+                    exact
+                    path="/craptocurrencies"
+                    element={<Craptocurrencies />}
+                  />
                 </Route>
                 <Route exact path="/crypto/:coinId">
-                  <Route exact path="/crypto/:coinId" element={<CryptoDetails />} />
+                  <Route
+                    exact
+                    path="/crypto/:coinId"
+                    element={<CryptoDetails />}
+                  />
                 </Route>
                 <Route exact path="/news">
                   <Route exact path="/news" element={<News />} />
@@ -33,13 +48,25 @@ const App = () => {
               </Routes>
             </div>
           </Layout>
+          <div className="footer">
+            <Typography.Title
+              level={5}
+              style={{ color: "white", textAlign: "center" }}
+            >
+              Cryptoenator anator
+              <br />
+              All rights revoked
+            </Typography.Title>
+            <Space>
+              <Link to="/">Home</Link>
+              <Link to="/exchanges">Exchanges</Link>
+              <Link to="/news">News</Link>
+            </Space>
+          </div>
         </div>
-        <div className="footer">
-            
-        </div>
-    </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
