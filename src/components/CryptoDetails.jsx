@@ -36,12 +36,13 @@ const CryptoDetails = () => {
 
   return (
     <Col className="coin-detail-container">
+      {console.log(cryptoDetails)}
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
-          {cryptoDetails.name} ({cryptoDetails.symbol}) Price
+          {cryptoDetails?.name} ({cryptoDetails?.symbol}) Price
         </Title>
         <p>
-          {cryptoDetails.name} live price in US dolalrs.<br/>
+          {cryptoDetails?.name} live price in US dolalrs.<br/>
           View value statistics, market cap, and supply.
         </p>
       </Col>
@@ -58,10 +59,10 @@ const CryptoDetails = () => {
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">
-              {cryptoDetails.name} value statistics
+              {cryptoDetails?.name} value statistics
             </Title>
             <p>
-              An overview showing the stats of {cryptoDetails.name}
+              An overview showing the stats of {cryptoDetails?.name}
             </p>
           </Col>
           {stats.map(({ icon, title, value }) => (
@@ -73,6 +74,48 @@ const CryptoDetails = () => {
               <Text className="stats">{value}</Text>
             </Col>
           ))}
+        </Col>
+        <Col className="other-stats-info">
+          <Col className="coin-value-statistics-heading">
+            <Title level={3} className="coin-details-heading">
+              Other statistics
+            </Title>
+            <p>
+              An overview showing the stats of all craptosthings
+            </p>
+          </Col>
+          {genericStats.map(({ icon, title, value }) => (
+            <Col className="coin-stats">
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Text className="stats">{value}</Text>
+            </Col>
+          ))}
+        </Col>
+      </Col>
+      <Col className="coin-desc-link">
+        <Row className="coin-desc">
+          <Title className="coin-details-heading" level={3}>
+            What is {cryptoDetails.name}
+            {HTMLReactParser(cryptoDetails.description)}
+          </Title>
+        </Row>
+        <Col className="coin-links">
+          <Title level={3} className="coin-details-heading">
+            {cryptoDetails.name} Links
+          </Title>
+          {cryptoDetails.links.map((link) => {
+            <Row className="coin-link" key={link.name}>
+              <Title className="link-name" level={5}>
+                {link.type}
+              </Title>
+              <a href={link.url} target="_blank" rel="norefer">
+                {link.name}
+              </a>
+            </Row>
+          })}
         </Col>
       </Col>
     </Col>
